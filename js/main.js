@@ -1,7 +1,10 @@
 //The user will enter a cocktail. Get a cocktail name, photo, and instructions and place them in the DOM
 
 
-document.querySelector("button").addEventListener("click", getCocktail);
+document.querySelector("button").addEventListener("click", () => {
+    getCocktail();
+
+});
 
 /* 
 function getCocktail() {
@@ -46,7 +49,11 @@ fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`)
      if(data.drinks.length - 1 === drinkNumber) { //restart counter if at last item of array
         drinkNumber = -1;
      }
+     if(!data.strDrink) {
+        drinkNumber = -1;
+      }
       data = data.drinks[++drinkNumber] //get the next object in the array
+      
       console.log(drinkNumber)
       document.querySelector("h3").innerText = "Ingredients:";
       document.querySelector("h2").innerText = data.strDrink; //get Name
