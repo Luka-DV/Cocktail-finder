@@ -1,0 +1,58 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+*{
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to right, lightblue, lightyellow);
+  text-align: center;
+  font-family: 'Lora', serif;
+}
+
+section {
+  width: 50%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+button {
+  font-weight: 700;
+}
+
+h2 {
+  font-style: italic;
+  font-weight: 700;
+}
+
+img{
+  display: block;
+  margin: 0 auto;
+  width: clamp(200px, 100%, 400px);
+  border-radius: 10%;
+  box-shadow: 0 0 25px grey;
+}
+
+ul {
+  display: inline-block;
+  text-align: left;
+  font-weight: 700;
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
+@media screen and (max-width: 610px) {
+  section {
+    width: 100%;
+  }
+}
