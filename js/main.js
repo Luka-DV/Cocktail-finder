@@ -1,10 +1,7 @@
 //The user will enter a cocktail. Get a cocktail name, photo, and instructions and place them in the DOM
 
 
-document.querySelector("button").addEventListener("click", () => {
-    getCocktail();
-
-});
+document.querySelector("button").addEventListener("click", getCocktail);
 
 /* 
 function getCocktail() {
@@ -35,26 +32,37 @@ fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`)
 
 let drinkNumber = -1;
 
+let currentCocktail = [];
+
+function checkIfDifferentCocktail(drink) {
+    if(currentCocktail[0] !== currentCocktail[1]){
+        drinkNumber = -1
+        currentCocktail = [drink];
+    }
+}
+
 function getCocktail() {
     let cocktail = document.querySelector("input").value;
+    currentCocktail.unshift(cocktail);
+    checkIfDifferentCocktail(cocktail);
 
-    console.log(cocktail)
 
 fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`)
     .then(res => res.json()) // parse response to JS
 
     .then(data => {
       console.log(data)
+
+     /*  if(data.drinks.length < drinkNumber) {
+        drinkNumber = -1
+      } */
     
-     if(data.drinks.length - 1 === drinkNumber) { //restart counter if at last item of array
-        drinkNumber = -1;
-     }
-     if(!data.strDrink) {
-        drinkNumber = -1;
-      }
+        if(data.drinks.length - 1 === drinkNumber) { //restart counter if at last item of array
+            drinkNumber = -1;
+        }
+    
       data = data.drinks[++drinkNumber] //get the next object in the array
-      
-      console.log(drinkNumber)
+
       document.querySelector("h3").innerText = "Ingredients:";
       document.querySelector("h2").innerText = data.strDrink; //get Name
       document.querySelector("img").src = data.strDrinkThumb; //get img
@@ -65,7 +73,6 @@ fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`)
       while(ulParentElement.firstChild) { //remove all of the previous li elements
         ulParentElement.removeChild(ulParentElement.firstChild)
       }
-
 
       for(let i = 1; data[`strIngredient${i}`] != null; i++) { //append neccessary li elements:
         const listItem = document.createElement("li");
