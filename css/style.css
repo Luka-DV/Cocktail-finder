@@ -11,6 +11,7 @@ body {
   background: linear-gradient(to right, lightblue, lightyellow);
   text-align: center;
   font-family: 'Lora', serif;
+  
 }
 
 section {
@@ -24,8 +25,25 @@ section {
 /* LAYOUT
 /*******************************************/
 
+input {
+  display: block;
+  width: 50%;
+  margin: 2em auto;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: 2px solid black;
+  box-shadow: 5px 5px 5px lightgray;
+}
+
+
 button {
   font-weight: 700;
+  box-shadow: 5px 5px 5px lightgray;
+  background: linear-gradient( rgb(252, 167, 10), rgb(243, 143, 243));
+}
+
+button:hover {
+  background: rgba(0, 0, 0, 0.10);
 }
 
 h2 {
@@ -33,18 +51,37 @@ h2 {
   font-weight: 700;
 }
 
+#cocktails {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  gap: 0.5em;
+  margin-bottom: 10%;
+}
+
+h4 {
+  text-align: left;
+}
+
 img{
   display: block;
   margin: 0 auto;
-  width: clamp(200px, 100%, 400px);
   border-radius: 10%;
   box-shadow: 0 0 25px grey;
+  margin-top: 10%;
+  max-width: 100%;
 }
 
 ul {
   display: inline-block;
   text-align: left;
   font-weight: 700;
+}
+
+p {
+  font-weight: 700;
+  font-size: clamp(0.8rem, 1.5vw, 1.5rem);
+  margin-top: 10%;
 }
 
 /******************************************
