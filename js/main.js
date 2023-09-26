@@ -56,6 +56,9 @@ function getCocktail(fizz) {
             document.querySelector("img").src = drinkData.strDrinkThumb; //get img
             document.querySelector("#instr").innerText = drinkData.strInstructions; // get instructions
 
+            displayImage();
+
+
             const ulParentElement = document.querySelector("#ingr");
 
             while(ulParentElement.firstChild) { //remove all of the previous li elements
@@ -64,7 +67,7 @@ function getCocktail(fizz) {
 
             for(let i = 1; drinkData[`strIngredient${i}`] != null; i++) { //append neccessary new li elements:
                 const listItem = document.createElement("li");
-                listItem.innerText = drinkData[`strIngredient${i}`];
+                listItem.innerText =  (drinkData[`strMeasure${i}`] || "") + " " + drinkData[`strIngredient${i}`];
                 ulParentElement.appendChild(listItem);
             }
             })
@@ -90,6 +93,16 @@ function getCocktail(fizz) {
             currentCocktail.pop();
         }
     }
+
+    function displayImage() {
+        document.querySelector("body > section+section").classList.remove("hidden");
+    }
+
+    function removeImage() {
+        document.querySelector("body > section+section").classList.add("hidden");
+    }
+
+    
     
 
     function getRandomCocktail() {
@@ -113,6 +126,8 @@ function getCocktail(fizz) {
                 document.querySelector("h2").innerText = drinkData.strDrink; //get Name
                 document.querySelector("img").src = drinkData.strDrinkThumb; //get img
                 document.querySelector("#instr").innerText = drinkData.strInstructions; // get instructions
+
+                displayImage();
     
                 const ulParentElement = document.querySelector("#ingr");
     
@@ -122,7 +137,7 @@ function getCocktail(fizz) {
     
                 for(let i = 1; drinkData[`strIngredient${i}`] != null; i++) { //append neccessary new li elements:
                     const listItem = document.createElement("li");
-                    listItem.innerText = drinkData[`strIngredient${i}`];
+                    listItem.innerText =  (drinkData[`strMeasure${i}`] || "") + " " + drinkData[`strIngredient${i}`];
                     ulParentElement.appendChild(listItem);
                 }
                 })
@@ -156,6 +171,8 @@ function getCocktail(fizz) {
                 ulParentElement.removeChild(ulParentElement.firstChild);
             }
 
+            removeImage();
+
             document.querySelector("h2").innerText = "";
             document.querySelector("h3").innerText = "";
             document.querySelector("h4").innerText = "";
@@ -164,7 +181,7 @@ function getCocktail(fizz) {
             document.querySelector("#cocktails").style.justifyContent = "flex-start";
 
             if(data.drinks.length > 1) {  //create new buttons
-                document.querySelector("p").innerText = "Choose you cocktail:"
+                document.querySelector("p").innerText = `Choose you cocktail with ${ingredient} :`
                 for(let i = 1; i <= data.drinks.length - 1; i++) {
                     const newButtton = document.createElement("button");
                     newButtton.innerText = data.drinks[i].strDrink;
@@ -185,7 +202,7 @@ function getCocktail(fizz) {
                     num++;
                 })
 
-                document.querySelector("#cocktails").style.fontSize = "clamp(0.8rem, 1.5vw, 1.2rem"
+                document.querySelector("#cocktails").style.fontSize = "clamp(0.8rem, 1.5vw, 1.2rem)"
             }
 
         })
