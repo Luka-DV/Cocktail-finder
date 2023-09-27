@@ -2,10 +2,10 @@
 <html lang="en">
 	<head>
     	<meta charset="utf-8">
-    	<meta name="description" content="This is where your description goes">
-    	<meta name="keywords" content="one, two, three">
+    	<meta name="description" content="Cocktail Search Engine">
+    	<meta name="keywords" content="cocktails">
 
-		<title>Title in the tab</title>
+		<title>Cocktail Finder</title>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,37 +14,31 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
+    <section>
+        <h1><label for="inp">Which Cocktail?</label></h1>
+        <input id="inp" type="text" name="" value="" aria-label="Search for cocktails by name or ingredient">
+        <button id="getCocktail" type="button" name="button" role="button">Get Cocktail</button>
+        <button id="lucky" type="button" name="button" role="button">I am feeling lucky</button>
+        <button id="ingredient" type="button" name="button" role="button">Search by ingredient</button>
 
-		<section>
+        <p></p>
 
-			<h1><label for="inp">Which Cocktail?</label></h1>
-			<input id="inp" type="text" name="" value="">
-			<button id="getCocktail" type="button" name="button">Get Cocktail</button>
-			<button id="lucky" type="button" name="button">I am feeling lucky</button>
-			<button id="ingredient" type="button" name="button">Search by ingredient</button>
+        <div id="cocktails" role="region" aria-live="polite"></div>
 
+        <h2></h2>
 
-			<p></p>
+        <h3></h3>
 
-			<div id="cocktails">
-				
-				
-			</div>
-	
-			<h2></h2>
-	
-			<h3></h3>
-	
-			<ul id="ingr"></ul>
-	
-			<h4 id="instr"></h4>
-			
-		</section>
+        <ul id="ingr"></ul>
 
-		<section class="hidden">
-			<img src="" alt="">
-		</section>
+        <h4 id="instr"></h4>
+    </section>
 
-		<script type="text/javascript" src="js/main.js"></script>
-	</body>
+    <section class="hidden">
+        <img src="" alt="No picture yet">
+    </section>
+
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
 </html>

@@ -55,7 +55,10 @@ function getCocktail(fizz) {
             document.querySelector("h3").innerText = "Ingredients:";
             document.querySelector("h2").innerText = drinkData.strDrink; //get Name
             document.querySelector("img").src = drinkData.strDrinkThumb; //get img
+            document.querySelector("img").alt = `Image of the cocktail named '${drinkData.strDrink}'`;
             document.querySelector("#instr").innerText = drinkData.strInstructions; // get instructions
+
+            
 
             displayImage();
 
@@ -126,6 +129,7 @@ function getCocktail(fizz) {
                 document.querySelector("h3").innerText = "Ingredients:";
                 document.querySelector("h2").innerText = drinkData.strDrink; //get Name
                 document.querySelector("img").src = drinkData.strDrinkThumb; //get img
+                document.querySelector("img").alt = `Image of the cocktail named '${drinkData.strDrink}'`; //insert alt text
                 document.querySelector("#instr").innerText = drinkData.strInstructions; // get instructions
 
                 displayImage();
