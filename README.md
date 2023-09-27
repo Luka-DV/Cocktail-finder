@@ -20,9 +20,9 @@ Cocktail Finder is a simple web application for searching and discovering cockta
 
 ## License
 
-This project is open-source and available under the GNU GENERAL PUBLIC LICENSE.
+This project is open-source and available under the GNU General Public License v3.0
 
-Feel free to use, modify, and distribute this code for non-commercial purposes.
+Feel free to use, modify, and distribute this code.
 
 ## Getting Started
 
