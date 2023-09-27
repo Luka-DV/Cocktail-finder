@@ -1,5 +1,6 @@
 //The user will enter a cocktail. Get a cocktail name, photo, and instructions and place them in the DOM
 
+"use strict";
 
 document.querySelector("#getCocktail").addEventListener("click", getCocktail);
 document.querySelector("#lucky").addEventListener("click", getRandomCocktail);
@@ -49,7 +50,7 @@ function getCocktail(fizz) {
             }
 
             
-            drinkData = data.drinks[++drinkNumber]; //get the next object in the array
+            const drinkData = data.drinks[++drinkNumber]; //get the next object in the array
 
             document.querySelector("h3").innerText = "Ingredients:";
             document.querySelector("h2").innerText = drinkData.strDrink; //get Name
@@ -120,7 +121,7 @@ function getCocktail(fizz) {
                 }
                 document.querySelector("p").innerText = "";
 
-                drinkData = data.drinks[0]
+                const drinkData = data.drinks[0]
     
                 document.querySelector("h3").innerText = "Ingredients:";
                 document.querySelector("h2").innerText = drinkData.strDrink; //get Name
