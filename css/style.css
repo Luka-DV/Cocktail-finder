@@ -54,9 +54,22 @@ button {
   background: linear-gradient( rgb(252, 167, 10), rgb(243, 143, 243));
 }
 
-button:hover {
-  background: rgba(36, 123, 180, 0.4);
+#cocktails button:nth-child(odd) {
+  background: lightblue;
 }
+
+#cocktails button:nth-child(even) {
+  background: lightyellow;
+}
+
+button:hover {
+  background: rgba(42, 172, 212, 0.2);
+}
+
+#cocktails button:hover {
+  background: rgba(145, 255, 0, 0.2);
+}
+
 
 h2 {
   font-style: italic;
@@ -64,9 +77,14 @@ h2 {
 }
 
 #cocktails {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap; 
-  justify-content: space-between;
+  justify-content: flex-start; */
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(4, auto);
+  grid-auto-rows: 0.5fr;
   gap: 0.5em;
   margin-bottom: 5%;
 }

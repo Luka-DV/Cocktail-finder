@@ -183,10 +183,10 @@ function getCocktail(fizz) {
             document.querySelector("h4").innerText = "";
             document.querySelector("img").src = "";
 
-            document.querySelector("#cocktails").style.justifyContent = "flex-start";
+            //document.querySelector("#cocktails").style.justifyContent = "flex-start";
 
             if(data.drinks.length > 1) {  //create new buttons
-                document.querySelector("p").innerText = `Choose you cocktail with ${ingredient} :`
+                document.querySelector("p").innerText = `Choose your cocktail with ${ingredient} :`
                 for(let i = 1; i <= data.drinks.length - 1; i++) {
                     const newButtton = document.createElement("button");
                     newButtton.innerText = data.drinks[i].strDrink;
@@ -195,17 +195,6 @@ function getCocktail(fizz) {
 
                 createEventListeners();
 
-
-                let num = 0;
-                document.querySelectorAll("#cocktails > button").forEach(button => {
-                    if(num % 2 === 0) {
-                        button.style.background = "lightyellow";
-                    } else {
-                        button.style.background = "lightblue";
-                    }
-
-                    num++;
-                })
 
                 document.querySelector("#cocktails").style.fontSize = "clamp(0.8rem, 1.5vw, 1.2rem)"
             }
