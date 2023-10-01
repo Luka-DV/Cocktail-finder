@@ -21,7 +21,7 @@ body {
 
 section {
   width: 49%;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 input, button {
@@ -29,13 +29,11 @@ input, button {
 }
 
 
+
 /******************************************
 /* LAYOUT
 /*******************************************/
 
-h1 {
-  margin-top: 0;
-}
 
 input {
   display: block;
@@ -52,6 +50,7 @@ button {
   font-weight: 700;
   box-shadow: 5px 5px 5px lightgray;
   background: linear-gradient( rgb(252, 167, 10), rgb(243, 143, 243));
+  margin: 1%;
 }
 
 #cocktails button:nth-child(odd) {
@@ -63,7 +62,7 @@ button {
 }
 
 button:hover {
-  background: rgba(42, 172, 212, 0.2);
+  background: rgba(145, 255, 0, 0.2);
 }
 
 #cocktails button:hover {
@@ -77,42 +76,46 @@ h2 {
 }
 
 #cocktails {
-  /* display: flex;
-  flex-wrap: wrap; 
-  justify-content: flex-start; */
+  max-width: 530px;
   display: grid;
   justify-content: center;
   align-content: center;
-  grid-template-columns: repeat(4, auto);
-  grid-auto-rows: 0.5fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
   gap: 0.5em;
-  margin-bottom: 5%;
+  margin: 0 auto;
+  margin-bottom: 3%;
+}
+
+h4, ul {
+  text-align: left;
+  font-size: 1.15em;
 }
 
 h4 {
-  text-align: left;
+  padding: 2%;
+}
+
+ul {
+  display: inline-block;
+  font-weight: 700;
+  list-style-image: url(../img/glassSmall.png);
 }
 
 img{
   display: block;
   margin: 0 auto;
   border-radius: 10%;
-  box-shadow: 0 0 25px grey;
+  box-shadow: 1.5vw 1.5vw 1.5vw grey;
   margin: auto;
   width: 90%;
-  max-width: 100%;
+  max-width: 600px;
 }
 
-ul {
-  display: inline-block;
-  text-align: left;
-  font-weight: 700;
-  list-style-image: url(../img/glassSmall.png);
-}
 
 p {
   font-weight: 700;
-  font-size: clamp(0.8rem, 1.5vw, 1.5rem);
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
   margin-top: 5%;
 }
 
@@ -125,12 +128,35 @@ section + section {
   align-content: center;
 }
 
+#instr {
+  display: flex;
+  justify-content: center;
+}
+
+
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1100px) {
   section {
     width: 100%;
   }
+
+  #cocktails {
+    max-width: 530px;
+  }
+
+  img {
+    margin: 10% auto;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  #cocktails {
+    width: 90%;
+    grid-template-columns: repeat(2, auto);
+  }
+
 }
