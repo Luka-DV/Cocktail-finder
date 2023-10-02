@@ -31,6 +31,7 @@ function getCocktail(fizz) {
             console.log(data);
 
             const cocktailsContainer = document.querySelector("#cocktails");
+            document.querySelector("#cocktails").style.display = "grid"
 
             if(drinkNumber === data.drinks.length - 1) { //restart counter if at last item of array
                     drinkNumber = -1;
@@ -49,9 +50,11 @@ function getCocktail(fizz) {
                     cocktailsContainer.appendChild(newButtton);
                 }
 
-                //document.querySelector("#cocktails").style.justifyContent = "space-between";
-
                 createEventListeners();
+            }
+
+            if(cocktailsContainer.childElementCount < 4) {
+                document.querySelector("#cocktails").style.display = "flex";
             }
 
             
@@ -81,10 +84,6 @@ function getCocktail(fizz) {
                 ulParentElement.appendChild(listItem);
             }
 
-            if(ulParentElement.childElementCount < 4) {
-                document.querySelector("#cocktails").style.display = "flex";
-            }
-
             })
 
         .catch(err => {
@@ -101,9 +100,7 @@ function getCocktail(fizz) {
             document.querySelector("p").innerText = `Sorry, we couldn't find a cocktail with '${inputText}' in its name.`
         } else {
             document.querySelector("p").innerText = `Sorry, we couldn't find a cocktail with the ingredient '${inputText}'.`
-        }
-        
-        
+        }             
     }
 
     function createEventListeners() {
@@ -205,6 +202,8 @@ function getCocktail(fizz) {
             console.log(data);
 
             const cocktailsContainer = document.querySelector("#cocktails");
+            document.querySelector("#cocktails").style.display = "grid"
+
             while(cocktailsContainer.firstChild) {  //reset cocktail buttons
                 cocktailsContainer.removeChild(cocktailsContainer.firstChild);
             }
@@ -233,7 +232,10 @@ function getCocktail(fizz) {
                 }
 
                 createEventListeners();
+            }
 
+            if(cocktailsContainer.childElementCount < 4) {
+                document.querySelector("#cocktails").style.display = "flex";
             }
 
         })

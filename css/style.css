@@ -82,9 +82,15 @@ h2 {
   align-content: center;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 1fr;
-  gap: 0.5em;
+  gap: 1%;
   margin: 0 auto;
   margin-bottom: 3%;
+}
+
+
+#cocktails button {
+  font-style: italic;
+  min-width: 30%;
 }
 
 h4, ul {
