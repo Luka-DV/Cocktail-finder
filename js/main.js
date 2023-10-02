@@ -5,6 +5,11 @@
 document.querySelector("#getCocktail").addEventListener("click", getCocktail);
 document.querySelector("#lucky").addEventListener("click", getRandomCocktail);
 document.querySelector("#ingredient").addEventListener("click", listByIngredient);
+document.body.addEventListener("keydown", e => {
+    if(e.key === "Enter") {
+        document.querySelector("#getCocktail").click();
+    }
+})
 
 
 let drinkNumber = -1;
@@ -44,7 +49,7 @@ function getCocktail(fizz) {
                     cocktailsContainer.appendChild(newButtton);
                 }
 
-                document.querySelector("#cocktails").style.justifyContent = "space-between";
+                //document.querySelector("#cocktails").style.justifyContent = "space-between";
 
                 createEventListeners();
             }
@@ -61,6 +66,7 @@ function getCocktail(fizz) {
             
 
             displayImage();
+            showElements();
 
 
             const ulParentElement = document.querySelector("#ingr");
@@ -74,13 +80,31 @@ function getCocktail(fizz) {
                 listItem.innerText =  (drinkData[`strMeasure${i}`] || "") + " " + drinkData[`strIngredient${i}`];
                 ulParentElement.appendChild(listItem);
             }
+
+            if(ulParentElement.childElementCount < 4) {
+                document.querySelector("#cocktails").style.display = "flex";
+            }
+
             })
 
         .catch(err => {
+            hideElements();
+            alertWrongInput("getCocktail");
             console.log(`error ${err}`);
         });
 
 }
+
+    function alertWrongInput(callingFunction) {
+        const inputText = document.querySelector("input").value;
+        if(callingFunction === "getCocktail") {
+            document.querySelector("p").innerText = `Sorry, we couldn't find a cocktail with '${inputText}' in its name.`
+        } else {
+            document.querySelector("p").innerText = `Sorry, we couldn't find a cocktail with the ingredient '${inputText}'.`
+        }
+        
+        
+    }
 
     function createEventListeners() {
         const category = document.querySelectorAll("#cocktails > *"); 
@@ -96,6 +120,21 @@ function getCocktail(fizz) {
         } else if (currentCocktail.length === 3) {
             currentCocktail.pop();
         }
+    }
+
+    function showElements() {
+        document.querySelector("h2").classList.remove("hidden");
+        document.querySelector("h3").classList.remove("hidden");
+        document.querySelector("ul").classList.remove("hidden");
+        document.querySelector("h4").style.display = "flex"
+    }
+
+    function hideElements() {
+        document.querySelector("h2").classList.add("hidden");
+        document.querySelector("h3").classList.add("hidden");
+        document.querySelector("ul").classList.add("hidden");
+        document.querySelector("h4").style.display = "none"
+        
     }
 
     function displayImage() {
@@ -133,6 +172,7 @@ function getCocktail(fizz) {
                 document.querySelector("#instr").innerText = drinkData.strInstructions; // get instructions
 
                 displayImage();
+                showElements();
     
                 const ulParentElement = document.querySelector("#ingr");
     
@@ -177,13 +217,12 @@ function getCocktail(fizz) {
             }
 
             removeImage();
+            hideElements();
 
             document.querySelector("h2").innerText = "";
             document.querySelector("h3").innerText = "";
             document.querySelector("h4").innerText = "";
             document.querySelector("img").src = "";
-
-            //document.querySelector("#cocktails").style.justifyContent = "flex-start";
 
             if(data.drinks.length > 1) {  //create new buttons
                 document.querySelector("p").innerText = `Choose your cocktail with ${ingredient} :`
@@ -195,13 +234,13 @@ function getCocktail(fizz) {
 
                 createEventListeners();
 
-
-                document.querySelector("#cocktails").style.fontSize = "clamp(0.8rem, 1.5vw, 1.2rem)"
             }
 
         })
 
         .catch(err => {
+            hideElements();
+            alertWrongInput();
             console.log(`error ${err}`);
         });
         
