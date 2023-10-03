@@ -18,8 +18,10 @@ let currentCocktail = [];
 
 
 function getCocktail(fizz) {
-    
-    let cocktail = (typeof fizz === "object") ? document.querySelector("input").value : fizz;
+
+
+    let cocktail = checkForCorrectInput(fizz);
+
     currentCocktail.unshift(cocktail);
     checkIfDifferentCocktail(cocktail);
 
@@ -44,9 +46,17 @@ function getCocktail(fizz) {
 
             if(data.drinks.length > 1) {  //create new buttons
                 document.querySelector("p").innerText = "Or did you mean..."
+
+                sortDrinkslAphabetically(data.drinks);
+
                 for(let i = 1; i <= data.drinks.length - 1; i++) {
                     const newButtton = document.createElement("button");
-                    newButtton.innerText = data.drinks[i].strDrink;
+
+                    if(data.drinks[i].strAlcoholic === "Non alcoholic") {
+                        newButtton.innerText = `${data.drinks[i].strDrink}\n(Non alcoholic)`
+                    } else {
+                        newButtton.innerText = data.drinks[i].strDrink;
+                    }
                     cocktailsContainer.appendChild(newButtton);
                 }
 
@@ -62,6 +72,9 @@ function getCocktail(fizz) {
 
             document.querySelector("h3").innerText = "Ingredients:";
             document.querySelector("h2").innerText = drinkData.strDrink; //get Name
+            if(drinkData.strAlcoholic === "Non alcoholic") {
+                document.querySelector("h2").innerText += `\n(Non alcoholic)`
+            }
             document.querySelector("img").src = drinkData.strDrinkThumb; //get img
             document.querySelector("img").alt = `Image of the cocktail named '${drinkData.strDrink}'`;
             document.querySelector("#instr").innerText = drinkData.strInstructions; // get instructions
@@ -88,11 +101,33 @@ function getCocktail(fizz) {
 
         .catch(err => {
             hideElements();
+            removeImage();
             alertWrongInput("getCocktail");
             console.log(`error ${err}`);
         });
 
 }
+
+
+    function checkForCorrectInput(input) {
+
+        if((typeof input === "object")) {
+            return  document.querySelector("input").value;
+        } else {
+            if(input.endsWith("(Non alcoholic)")) {
+                return input.replace("(Non alcoholic)","")
+            } 
+            return input;
+        }
+    }
+
+
+    function sortDrinkslAphabetically(drinksArray) {
+        drinksArray.sort((a, b) => {
+            if(a.strDrink < b.strDrink) return -1
+            else return 1;
+        }); 
+    }
 
     function alertWrongInput(callingFunction) {
         const inputText = document.querySelector("input").value;
@@ -141,6 +176,8 @@ function getCocktail(fizz) {
     function removeImage() {
         document.querySelector("body > section+section").classList.add("hidden");
     }
+
+
 
     
     
@@ -223,9 +260,12 @@ function getCocktail(fizz) {
             document.querySelector("h4").innerText = "";
             document.querySelector("img").src = "";
 
-            if(data.drinks.length > 1) {  //create new buttons
+            if(data.drinks.length >= 1) {  //create new buttons
                 document.querySelector("p").innerText = `Choose your cocktail with ${ingredient} :`
-                for(let i = 1; i <= data.drinks.length - 1; i++) {
+
+                sortDrinkslAphabetically(data.drinks);
+
+                for(let i = 0; i <= data.drinks.length - 1; i++) {
                     const newButtton = document.createElement("button");
                     newButtton.innerText = data.drinks[i].strDrink;
                     cocktailsContainer.appendChild(newButtton);
@@ -242,6 +282,7 @@ function getCocktail(fizz) {
 
         .catch(err => {
             hideElements();
+            removeImage();
             alertWrongInput();
             console.log(`error ${err}`);
         });
