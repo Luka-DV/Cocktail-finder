@@ -261,7 +261,7 @@ function getCocktail(fizz) {
             document.querySelector("img").src = "";
 
             if(data.drinks.length >= 1) {  //create new buttons
-                document.querySelector("p").innerText = `Choose your cocktail with ${ingredient} :`
+                document.querySelector("p").innerText = `Choose your cocktail with the ingredient '${ingredient}':`
 
                 sortDrinkslAphabetically(data.drinks);
 
