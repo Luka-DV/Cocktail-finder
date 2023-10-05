@@ -26,7 +26,9 @@
 		</div>
     
 
-        <h2 class="hidden"></h2>
+   <!-- Original:
+	
+		<h2 class="hidden"></h2>
 
         <h3 class="hidden"></h3>
 
@@ -36,11 +38,24 @@
 
 		<p></p>
 
-		<div id="cocktails" role="region" aria-live="polite"></div>
+		<div id="cocktails" role="region" aria-live="polite"></div> -->
+
+		<h2 id="cocktail-heading" class="hidden" aria-hidden="true"></h2>
+
+		<h3 id="ingredients-heading" class="hidden" aria-hidden="true"></h3>
+
+		<ul id="ingr" aria-labelledby="ingredients-heading"></ul>
+
+		<h4 id="instr" class="hidden" aria-hidden="true"></h4>
+
+		<p aria-hidden="true"></p>
+
+		<div id="cocktails" role="region" aria-live="polite" aria-labelledby="cocktail-heading ingredients-heading instructions-heading"></div>
+
 
     </section>
 
-    <section class="hidden">
+    <section id="img-section" class="hidden">
         <img src="" alt="No picture yet">
     </section>
 
