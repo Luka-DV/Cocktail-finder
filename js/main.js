@@ -127,10 +127,11 @@ function sortDrinkslAphabetically(drinksArray) {
 
 function alertWrongInput(callingFunction) {
     const inputText = document.querySelector("input").value;
+    console.log(inputText)
     if(callingFunction === "getCocktail") {
         document.querySelector("p").innerText = `Sorry, we couldn't find a cocktail with '${inputText}' in its name.`;
     } else {
-        document.querySelector("p").innerText = `Sorry, we couldn't find a cocktail with the ingredient '${inputText}'.`;
+        document.querySelector("p").innerText = `Sorry, we couldn't find a cocktail with the ingredient '${inputText || "nothing"}'.`;
     }             
 }
 
