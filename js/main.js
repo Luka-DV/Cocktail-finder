@@ -173,9 +173,15 @@ function removeImage() {
     document.querySelector("#img-section").classList.add("hidden");
 }
 
+function clearInput() {
+    document.querySelector("#inp").value = null;
+}
+
 
 
 function getRandomCocktail() {
+
+    clearInput();
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
         .then(res => res.json()) // parse response to JS
