@@ -24,9 +24,7 @@ This project is open-source and available under the GNU General Public License v
 
 Feel free to use, modify, and distribute this code.
 
-## Getting Started
+## Link
 
-1. Clone this repository to your local machine.
-2. Open `index.html` in your preferred web browser.
-3. Start exploring cocktails!
+[Link to the app](https://cocktail-finder-site.netlify.app/)
 
