@@ -2,6 +2,8 @@
 
 Cocktail Finder is a simple web application for searching and discovering cocktails using [TheCocktailDB APIs](https://www.thecocktaildb.com/api.php). Whether you're looking for a specific cocktail, feeling lucky, or searching by ingredient, this app has you covered.
 
+![Snapshot of web app](https://github.com/Luka-DV/Cocktail-finder-100Devs/assets/110667466/c1a0dfa0-cea3-41c1-ae0a-72b849c7059b)
+
 ## Features
 
 - **Cocktail Search:** Enter the name or ingredient of a cocktail, and the app will fetch cocktail details, including name, photo, instructions, and ingredients.
